@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, SimpleChanges, OnChanges } from '@angular/core';
 import { Customer } from 'src/app/shared/interfaces';
+import { throttleTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer-details',
@@ -19,7 +20,9 @@ export class CustomerDetailsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['customer']) {
+    if (changes['customer'].isFirstChange()) {
+
+    } else if (changes['customer']) {
       const cust = changes['customer'].currentValue as Customer;
       this.addTax(cust);
       this.logMessages.push({ title: 'Customer changed', value: cust });

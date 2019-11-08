@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
 import { Customer } from 'src/app/shared/interfaces';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-customer-list',
@@ -12,13 +11,15 @@ export class CustomerListComponent implements OnInit, OnChanges {
   @Input() customers: Customer[];
   logMessages = [];
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['customers']) {
+    if (changes['customers'].isFirstChange()) {
+
+    } else if (changes['customers']) {
       const custs = changes['customers'].currentValue;
       this.logMessages.push({ title: 'Customers changed', value: custs });
     }
