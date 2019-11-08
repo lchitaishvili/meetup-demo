@@ -1,11 +1,11 @@
 <div *ngIf="customer">
-    Name: <input type="text" [value]="customer.name" 
+    Name: <input type="text" [value]="customer.name"
         (input)="customer.name=$event.target.value">
     <br />
-    City: <input type="text" [value]="customer.address.city" 
+    City: <input type="text" [value]="customer.address.city"
         (input)="customer.address.city=$event.target.value">
     <br />
-    Order Total: <input type="text" [value]="customer.orderTotal" 
+    Order Total: <input type="text" [value]="customer.orderTotal"
         (input)="customer.orderTotal=$event.target.value">
     <br />
     Order Total (with tax): {{ customer.orderTotalWithTax | currency }}

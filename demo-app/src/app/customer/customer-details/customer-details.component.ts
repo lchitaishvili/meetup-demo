@@ -16,7 +16,6 @@ export class CustomerDetailsComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-
   }
 
   ngOnChanges(changes: SimpleChanges) {
